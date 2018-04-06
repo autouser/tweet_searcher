@@ -1,24 +1,5 @@
-# README
+# Tweet Searcher
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Very simple search engine for tweets
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Add your Twitter API keys to the secrets.yml file before starting the engine.
