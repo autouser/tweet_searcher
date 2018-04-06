@@ -44,6 +44,12 @@ RSpec.describe TweetSearch, type: :model do
   end
 
   context "#search" do
-    it "returns search results"
+    let(:tweet_search)  { described_class.new(query: "helloworld", result_type: "wrong_type") }
+    let(:search_result) { [{id: 12345, content: "Hello world!"}, {id: 67890, content: "Hello from another world!"}] }
+    
+    it "returns search results" do
+      mock_twitter_api(search_result)
+      expect( tweet_search.search ).to match_array(search_result)
+    end
   end
 end
