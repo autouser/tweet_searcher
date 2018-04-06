@@ -1,2 +1,32 @@
-<h1>TweetSearch#search</h1>
-<p>Find me in app/views/tweet_search/search.html.erb</p>
+<h2>Search for tweets</h2>
+
+<% if @tweet_search.errors.any? %>
+  <p class='errors'>
+    <% @tweet_search.errors.full_messages.each do |message| %>
+      <div class='error'><%= message %></div>
+    <% end %>
+  </p>
+<% end %>
+
+<p class='search'>
+  <%= form_for @tweet_search, url: root_path, method: "GET" do |f| %>
+    <%= f.hidden_field :result_type %>
+    <%= f.text_field :query, placeholder: "Tweet Content" %>
+    <%= f.submit "Search" %>
+  <% end %>
+</p>
+
+<% if @result.present?%>
+  <% @result.each do |r| %>
+    <p class='tweet'>
+      <hr />
+      <div class='link'>
+        <%= link_to "Go to the tweet", "https://twitter.com/statuses/#{r[:id]}", target: '_blank' %>
+      </div>
+      <div class='content'>
+        <%= simple_format r[:content] %>
+      </div>
+    </p>
+  <% end %>
+  <hr />
+<% end %>

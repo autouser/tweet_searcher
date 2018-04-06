@@ -18,13 +18,13 @@ RSpec.describe TweetSearchController, type: :controller do
     end
 
     it "assigns no :result" do
-      expect( assigns[:result] ).to be_nil
+      expect( assigns[:result] ).to eq([])
     end
   end
 
   describe "GET #search with params" do
 
-    before(:each) { get :search, params: {query: "helloworld"} }
+    before(:each) { get :search, params: {tweet_search: {query: "helloworld", result_type: "popular"}} }
 
     it "returns http success" do
       expect(response).to have_http_status(:success)

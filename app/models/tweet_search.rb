@@ -1,7 +1,9 @@
 class TweetSearch
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
-
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
+ 
   attr_accessor :query, :result_type
   attr_writer   :twitter_api
 
@@ -38,4 +40,13 @@ class TweetSearch
     Rails.logger.error "Twitter API request Error: #{e}"
     return []
   end
+
+  def persisted?
+    false
+  end
+ 
+  def id
+    nil
+  end
+
 end
